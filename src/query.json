@@ -1,0 +1,14 @@
+﻿{
+  "baystars":  ["#baystars", "横浜優勝", "ベイス"],
+  "giants":    ["#giants", "#kyojin" ,"ジャイアンツ", "読売"],
+  "tigers":    ["#tigers", "#hanshin", "とらほー", "タイガース", "阪神"],
+  "swallows":  ["#swallows", "#yakult", "すわほー", "スワローズ"],
+  "dragons":   ["#dragons", "#chunichi", "どらほー", "中日"],
+  "carp":      ["#carp", "カープ", "こいほー"],
+  "hawks":     ["#hawks", "ホークス", "熱男"],
+  "lions":     ["#lions", "ライオンズ"],
+  "buffaloes": ["#buffaloes", "バファローズ", "おりほー"],
+  "eagles":    ["#eagles", "イーグルス"],
+  "fighters":  ["#fighters", "日ハム"],
+  "marines":   ["#marines", "マリーンズ", "ロッテ"]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "npb_livecloud",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "http": "0.0.1-security",
+    "mecab-async": "^0.1.2",
+    "socketio": "^1.0.0",
+    "twit": "^2.2.11"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "suibari",
+  "license": "ISC"
+}

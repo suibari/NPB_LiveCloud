@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <title>NPB Live-cloud!</title>
+    <style type="text/css">
+      div.TPS {
+        border-left-width: 8px;
+        border-left-style: solid;
+      }
+      div.TPS.baystars  {border-color: dodgerblue;}
+      div.TPS.giants    {border-color: orange;}
+      div.TPS.tigers    {border-color: yellow;}
+      div.TPS.swallows  {border-color: limegreen;}
+      div.TPS.dragons   {border-color: darkblue;}
+      div.TPS.carp      {border-color: red;}
+      div.TPS.hawks     {border-color: gold;}
+      div.TPS.lions     {border-color: aqua;}
+      div.TPS.buffaloes {border-color: darkgoldenrod;}
+      div.TPS.eagles    {border-color: firebrick;}
+      div.TPS.fighters  {border-color: steelblue;}
+      div.TPS.marines   {border-color: black;}
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row bg-dark text-white">
+        <div class="col giants TPS">-.--</div>
+        <div class="col baystars TPS">-.--</div>
+        <div class="col tigers TPS">-.--</div>
+        <div class="col carp TPS">-.--</div>
+        <div class="col dragons TPS">-.--</div>
+        <div class="col swallows TPS">-.--</div>
+      </div>
+      <div class="row bg-dark text-white">
+        <div class="col lions TPS">-.--</div>
+        <div class="col hawks TPS">-.--</div>
+        <div class="col eagles TPS">-.--</div>
+        <div class="col marines TPS">-.--</div>
+        <div class="col fighters TPS">-.--</div>
+        <div class="col buffaloes TPS">-.--</div>
+      </div>
+    </div>
+    <div class="container pt-5">
+      <div class="raw">
+        <figure>
+          <div class="col-sm-12">
+            <div class="chartcontainer" id="chart">
+              <!-- svg -->
+            </div>
+          </div>
+        </figure>
+      </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <script src="./client/wordCloud.js"></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-cloud/1.2.5/d3.layout.cloud.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script>
+      // #chartにワードクラウドインスタンス生成
+      var myWordCloud = new wordCloud('#chart');
+
+      io.connect("http://localhost:8080").on('update', (data) => {
+        console.log('YUKI.N > received data, counts:' + data.count.length);
+        // ワードクラウド更新
+        myWordCloud.update(data.count);
+        // TPS更新
+        for (let team in data.tps) {
+          $('.TPS.'+ team).text(data.tps[team]);
+        }
+      })
+    </script>
+  </body>
+</html>
