@@ -8,9 +8,16 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <title>NPB Live-cloud!</title>
     <style type="text/css">
-      div.TPS {
-        border-left-width: 8px;
+      div.TPS { /* 小画面用 */
+        padding-left: 5px;
+        border-left-width: 5px;
         border-left-style: solid;
+      }
+      @media only screen and (min-width:651px) { /* 中画面用 */
+        div.TPS {
+          padding-left: 15px;
+          border-left-width: 8px;
+        }
       }
       div.TPS.baystars  {border-color: dodgerblue;}
       div.TPS.giants    {border-color: orange;}
@@ -29,26 +36,26 @@
   <body>
     <div class="container-fluid">
       <div class="row bg-dark text-white">
-        <div class="col giants TPS">-.--</div>
-        <div class="col baystars TPS">-.--</div>
-        <div class="col tigers TPS">-.--</div>
-        <div class="col carp TPS">-.--</div>
-        <div class="col dragons TPS">-.--</div>
-        <div class="col swallows TPS">-.--</div>
+        <div class="col-2 giants TPS">-.--</div>
+        <div class="col-2 baystars TPS">-.--</div>
+        <div class="col-2 tigers TPS">-.--</div>
+        <div class="col-2 carp TPS">-.--</div>
+        <div class="col-2 dragons TPS">-.--</div>
+        <div class="col-2 swallows TPS">-.--</div>
       </div>
       <div class="row bg-dark text-white">
-        <div class="col lions TPS">-.--</div>
-        <div class="col hawks TPS">-.--</div>
-        <div class="col eagles TPS">-.--</div>
-        <div class="col marines TPS">-.--</div>
-        <div class="col fighters TPS">-.--</div>
-        <div class="col buffaloes TPS">-.--</div>
+        <div class="col-2 lions TPS">-.--</div>
+        <div class="col-2 hawks TPS">-.--</div>
+        <div class="col-2 eagles TPS">-.--</div>
+        <div class="col-2 marines TPS">-.--</div>
+        <div class="col-2 fighters TPS">-.--</div>
+        <div class="col-2 buffaloes TPS">-.--</div>
       </div>
     </div>
-    <div class="container pt-5">
-      <div class="raw">
+    <div class="container-fluid pt-3">
+      <div class="raw no-gutters">
         <figure>
-          <div class="col-sm-12">
+          <div class="col px-0">
             <div class="chartcontainer" id="chart">
               <!-- svg -->
             </div>

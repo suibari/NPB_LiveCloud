@@ -4,7 +4,7 @@ class wordCloud {
   constructor(selector) {
     this._size = {
       width:  $(selector).width(),
-      height: 480
+      height: $(window).height() - 100 // ビューポート高さからTPS表示部分の分+余白の約100を引く
     }
     this._cloud = d3.select(selector)
     .append('svg')
@@ -44,9 +44,10 @@ class wordCloud {
   update(words) {
     d3.layout.cloud()
     .size([this._size.width, this._size.height])
-    .words(this._getWords(words))                    // words配列を_drawに渡す
+    .words(this._getWords(words))              // words配列を_drawに渡す
     .fontSize((d) => { return d.size })        // フォントサイズを設定
     .rotate(() => { return 0 })                // 回転なしを設定
+    .padding(4)                                // ワードクラウド文字間隔を拡大(defaultは1)
     .on("end", this._draw) // layoutが全ての単語の配置を完了したら、_draw関数を実行する
     .start();                                  // _draw関数の実行
   }
