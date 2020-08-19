@@ -69,7 +69,10 @@
       // #chartにワードクラウドインスタンス生成
       var myWordCloud = new wordCloud('#chart');
 
-      io.connect("http://localhost:8080").on('update', (data) => {
+      const APP_URL = (process.env.APP_URL && process.env.PORT) ?
+                      (process.env.APP_URL + ":" + process.env.PORT) :
+                      "http://localhost:8080";
+      io.connect(APP_URL).on('update', (data) => {
         console.log('YUKI.N > received data, counts:' + data.count.length);
         // ワードクラウド更新
         myWordCloud.update(data.count);

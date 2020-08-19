@@ -33,7 +33,7 @@ app.get('/', (req, res) => {
 });
 
 // Socket.ioサーバを立てる
-http.listen(8080, () => { console.log('YUKI.N > Server has runned, on port:8080.') });
+http.listen(process.env.PORT || 8080, () => { console.log('YUKI.N > Server has runned.') });
 io.on('connection', (socket) => {
   // コネクションがあった
   console.log('YUKI.N > a user connected.');
