@@ -21,7 +21,7 @@ const stream = twit.stream('statuses/filter',
 
 // ツイートがあるたびになにかする
 stream.on('tweet', (tweet) => {
-  console.log(tweet.user_name + "> " + tweet.text);
+  console.log(tweet.user.name + "> " + tweet.text);
   // analysis.jsにtweet.textを渡す
   require('./analysis.js')(tweet.text);
 });

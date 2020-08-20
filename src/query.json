@@ -5,10 +5,10 @@
   "swallows":  ["#swallows", "#yakult", "すわほー", "スワローズ"],
   "dragons":   ["#dragons", "#chunichi", "どらほー", "中日"],
   "carp":      ["#carp", "カープ", "こいほー"],
-  "hawks":     ["#hawks", "ホークス", "熱男"],
-  "lions":     ["#lions", "ライオンズ"],
+  "hawks":     ["#hawks", "#sbhawks", "ホークス", "熱男"],
+  "lions":     ["#lions", "#seibulions", "ライオンズ"],
   "buffaloes": ["#buffaloes", "バファローズ", "おりほー"],
-  "eagles":    ["#eagles", "イーグルス"],
-  "fighters":  ["#fighters", "日ハム"],
-  "marines":   ["#marines", "マリーンズ", "ロッテ"]
+  "eagles":    ["#eagles", "#RakutenEagles", "イーグルス", "わしほー"],
+  "fighters":  ["#fighters", "#lovefighters", "日ハム"],
+  "marines":   ["#marines", "chibalotte", "マリーンズ"]
 }

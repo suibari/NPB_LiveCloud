@@ -4,6 +4,21 @@ const Mecab  = require('mecab-async');
 const mecab  = new Mecab;
 const q_json = require('./src/query.json');
 
+const exclusuon_word = [ // 除外ワード配列
+  "横浜", "ベイスターズ", "ＤｅＮＡ",
+  "読売", "ジャイアンツ", "巨人", "東京ドーム",
+  "阪神", "タイガース",
+  "ヤクルト", "スワローズ",
+  "中日", "ドラゴンズ",
+  "広島", "カープ",
+  "福岡", "ソフトバンク", "ホークス",
+  "埼玉", "西武", "ライオンズ",
+  "オリックス", "バファローズ",
+  "楽天", "イーグルス",
+  "ファイターズ", "日ハム",
+  "千葉ロッテ", "マリーンズ", "ロッテマリーンズ"
+];
+
 module.exports = function (text) {
   var cheer_teams = []; // 該当チーム名を入れる配列
 
@@ -26,8 +41,10 @@ module.exports = function (text) {
     if (err) throw err; // エラーならthrowする
 
     arr_words.forEach((word) => {
-      if (((word[1]=="名詞") || (word[1]=="固有名詞")) && (checkJa(word[0]))) {
-        // wordが「名詞or固有名詞」かつ「日本語」なら
+      var isCount = ((word[1]=="名詞") || (word[1]=="固有名詞")) && checkJa(word[0]) && !(checkEmoji(word[0]) && (exclusuon_word.indexOf(word[0])==-1));
+      if (isCount) {
+        console.log(word);
+        // wordが「名詞or固有名詞」かつ「日本語を含む」かつ「絵文字を含まない」かつ「除外ワードと完全一致しない」なら
         // そのwordとチーム名配列のセットをstoring.jsに渡す
         require('./storing.js').setCount(word[0], cheer_teams);
       }
@@ -43,5 +60,18 @@ module.exports = function (text) {
         return isJapanese = true;
       }
     }
+  }
+
+  // 文字コードから絵文字を判別する関数
+  function checkEmoji(str) {
+    const ranges = [
+      '\ud83c[\udf00-\udfff]',
+      '\ud83d[\udc00-\ude4f]',
+      '\ud83d[\ude80-\udeff]',
+      '\ud7c9[\ude00-\udeff]',
+      '[\u2600-\u27BF]'
+    ];
+    const regexp = new RegExp(ranges.join('|'), 'g');
+    return regexp.test(str);
   }
 }

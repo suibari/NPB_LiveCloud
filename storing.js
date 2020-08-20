@@ -75,7 +75,7 @@ module.exports.setTPS = function (teams) {
     }
   })
 
-  console.log(obj_tps_tmp);
+  //console.log(obj_tps_tmp);
 }
 
 module.exports.getTPS = function () {
