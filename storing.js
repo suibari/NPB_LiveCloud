@@ -1,7 +1,8 @@
 'use strict';
 
-const MAX_WORDS_LENGTH = 1000; // この数以上のword種類の集計は行わない
-const MAX_TPS_LENGTH   = 10;
+const OUT_WORDS_LENGTH = 500;   // 出力するword種類の数。上位から出力する
+const MAX_WORDS_LENGTH = 10000; // この数以上のword種類の集計は行わない
+const MAX_TPS_LENGTH   = 10;    // この数までTPS値をためてから平均を出す
 
 var arr_count         = [];
 var obj_tps_tmp       = {};
@@ -28,7 +29,7 @@ module.exports.setCount = function (word, teams) {
       );
     }
   })
-  // 降順ソートする
+  // 昇順ソートする
   arr_count.sort((a, b) => {
     var x = a.count;
     var y = b.count;
@@ -36,7 +37,7 @@ module.exports.setCount = function (word, teams) {
     if (x < y) return -1;
     return 0;
   });
-  // メモリひっ迫対策で、配列要素数が一定値以上なら削除
+  // メモリひっ迫対策で、配列要素数が一定値以上ならば先頭から削除する
   if (arr_count.length > MAX_WORDS_LENGTH) {
     do {
       arr_count.shift();
@@ -47,7 +48,13 @@ module.exports.setCount = function (word, teams) {
 };
 
 module.exports.getCount = function () {
-  return arr_count;
+  // 出力がOUT_WORDS_LENGTH分たまっているかどうか
+  if (arr_count.length > OUT_WORDS_LENGTH) {
+    // 配列の後ろOUT_WORDS_LENGTH個を出力する
+    return arr_count.slice(arr_count.length - OUT_WORDS_LENGTH);
+  } else {
+    return arr_count;    
+  }
 }
 
 module.exports.setTPS = function (teams) {

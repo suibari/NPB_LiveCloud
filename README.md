@@ -6,6 +6,7 @@ NPB Live-cloud!
 Twitter上のプロ野球関連ツイートを集計し、トレンドワードと思われる言葉をワードクラウドにして表示します。**どのチームでどういう話題が盛り上がっているのか**を、特別な知識がなくてもグラフィカルに見ることができます。
 
 ## Description
+![npb_livecloud](https://user-images.githubusercontent.com/61776220/90746838-93adae80-e30b-11ea-993d-546b2cf82b8d.png)
 本アプリケーションは以下の機能を持ちます。
 
 ### 1. Twitterからデータ取得

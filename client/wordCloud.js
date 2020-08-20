@@ -47,7 +47,7 @@ class wordCloud {
     .words(this._getWords(words))              // words配列を_drawに渡す
     .fontSize((d) => { return d.size })        // フォントサイズを設定
     .rotate(() => { return 0 })                // 回転なしを設定
-    .padding(4)                                // ワードクラウド文字間隔を拡大(defaultは1)
+    .padding(2)                                // ワードクラウド文字間隔を拡大(defaultは1)
     .on("end", this._draw) // layoutが全ての単語の配置を完了したら、_draw関数を実行する
     .start();                                  // _draw関数の実行
   }
