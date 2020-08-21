@@ -7,13 +7,13 @@ const q_json = require('./src/query.json');
 const exclusuon_word = [ // 除外ワード配列
   "横浜", "ベイスターズ", "ＤｅＮＡ",
   "読売", "ジャイアンツ", "巨人", "東京ドーム",
-  "阪神", "タイガース",
-  "ヤクルト", "スワローズ",
+  "阪神", "タイガース", "阪神タイガース",
+  "ヤクルト", "スワローズ", "ヤクルトスワローズ", "東京",
   "中日", "ドラゴンズ",
-  "広島", "カープ",
-  "福岡", "ソフトバンク", "ホークス",
-  "埼玉", "西武", "ライオンズ",
-  "オリックス", "バファローズ",
+  "広島", "カープ", "広島東洋カープ",
+  "福岡", "ソフトバンク", "ホークス", "ソフトバンクホークス",
+  "埼玉", "西武", "ライオンズ", "西武ライオンズ",
+  "オリックス", "バファローズ", "オリックス・バファローズ", "オリックスバファローズ",
   "楽天", "イーグルス",
   "ファイターズ", "日ハム",
   "千葉ロッテ", "マリーンズ", "ロッテマリーンズ"
@@ -33,6 +33,7 @@ module.exports = function (text) {
       }
     }
   };
+  console.log(cheer_teams);
   // チーム名配列をstoring.jsに渡す
   require('./storing.js').setTPS(cheer_teams);
 
@@ -41,9 +42,9 @@ module.exports = function (text) {
     if (err) throw err; // エラーならthrowする
 
     arr_words.forEach((word) => {
-      var isCount = ((word[1]=="名詞") || (word[1]=="固有名詞")) && checkJa(word[0]) && !(checkEmoji(word[0]) && (exclusuon_word.indexOf(word[0])==-1));
+      var isCount = ((word[1]=="名詞") || (word[1]=="固有名詞")) && checkJa(word[0]) && !(checkEmoji(word[0])) && (exclusuon_word.indexOf(word[0])==-1);
       if (isCount) {
-        console.log(word);
+        //console.log(word);
         // wordが「名詞or固有名詞」かつ「日本語を含む」かつ「絵文字を含まない」かつ「除外ワードと完全一致しない」なら
         // そのwordとチーム名配列のセットをstoring.jsに渡す
         require('./storing.js').setCount(word[0], cheer_teams);

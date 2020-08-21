@@ -3,12 +3,12 @@
   "giants":    ["#giants", "#kyojin" ,"ジャイアンツ", "読売"],
   "tigers":    ["#tigers", "#hanshin", "とらほー", "タイガース", "阪神"],
   "swallows":  ["#swallows", "#yakult", "すわほー", "スワローズ"],
-  "dragons":   ["#dragons", "#chunichi", "どらほー", "中日"],
+  "dragons":   ["#dragons", "#chunichi", "どらほー", "中日", "ドラゴンズ"],
   "carp":      ["#carp", "カープ", "こいほー"],
   "hawks":     ["#hawks", "#sbhawks", "ホークス", "熱男"],
   "lions":     ["#lions", "#seibulions", "ライオンズ"],
   "buffaloes": ["#buffaloes", "バファローズ", "おりほー"],
   "eagles":    ["#eagles", "#RakutenEagles", "イーグルス", "わしほー"],
   "fighters":  ["#fighters", "#lovefighters", "日ハム"],
-  "marines":   ["#marines", "chibalotte", "マリーンズ"]
+  "marines":   ["#marines", "chibalotte", "マリーンズ", "まりほー"]
 }
