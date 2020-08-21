@@ -36,7 +36,11 @@ app.get('/', (req, res) => {
 http.listen(process.env.PORT || 8080, () => { console.log('YUKI.N > Server has runned.') });
 io.on('connection', (socket) => {
   // コネクションがあった
-  console.log('YUKI.N > a user connected.');
+  console.log('YUKI.N > a user connected. so emit data to the client.');
+  socket.emit('update', {
+    count: require('./storing.js').getCount(),
+    tps:   require('./storing.js').getTPS()
+  })
   // コネクションが閉じられた
   socket.on('disconnect', () => {
     console.log('YUKI.N > user disconnected.');
