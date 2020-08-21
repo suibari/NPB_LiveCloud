@@ -54,8 +54,9 @@ class wordCloud {
 
   // 集計データをd3.cloudで読み取り可能なオブジェクトに変換する関数
   _getWords(data) {
-    var countMax   = d3.max(data, function(d){return d.count});
-    var sizeScale  = d3.scaleLog().domain([1, countMax]).range([10, 50]); //ログスケール
+    var countMax   = d3.max(data, (d) => {return d.count});
+    var countMin   = d3.min(data, (d) => {return d.count});
+    var sizeScale  = d3.scaleLog().domain([countMin, countMax]).range([10, 50]); //ログスケール
     var colorScale = function(t){
       switch(t) {
         case "baystars":  return d3.color("dodgerblue");
