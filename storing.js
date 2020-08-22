@@ -1,6 +1,6 @@
 'use strict';
 
-const OUT_WORDS_LENGTH = 500;   // 出力するword種類の数。上位から出力する
+const OUT_WORDS_LENGTH = 400;   // 出力するword種類の数。上位から出力する
 const MAX_WORDS_LENGTH = 10000; // この数以上のword種類の集計は行わない
 const MAX_TPS_LENGTH   = 10;    // この数までTPS値をためてから平均を出す
 

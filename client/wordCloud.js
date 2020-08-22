@@ -4,7 +4,7 @@ class wordCloud {
   constructor(selector) {
     this._size = {
       width:  $(selector).width(),
-      height: $(window).height() - 100 // ビューポート高さからTPS表示部分の分+余白の約100を引く
+      height: $(window).height() - 120 // ビューポート高さからTPS表示部分の分+余白+フッター の約120を引く
     }
     this._cloud = d3.select(selector)
     .append('svg')
