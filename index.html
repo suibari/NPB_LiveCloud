@@ -67,10 +67,43 @@
     <!-- footer -->
     <div class="container-fluid">
       <div class="raw text-center small text-muted my-2">
+        <a href="" class="text-muted" data-toggle="modal" data-target="#howtouse">つかいかた</a>
+      </div>
+      <div class="raw text-center small text-muted my-2">
         NPB-LiveCloud! 
-        <a href="//github.com/suibari" class="text-muted">@suibari</a>
+        <a href="https://github.com/suibari" class="text-muted">@suibari</a>
       </div>
     </div>
+    <!-- modal -->
+    <div class="modal fade" id="howtouse" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">つかいかた</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="container-fluid">
+              <div class="raw　no-gutters">
+                <ul>
+                  <li>文字の大きさは、そのワードのツイート総数です。</li>
+                  <li>文字の色は、球団カラーに対応しています。</li>
+                  <li>画面上部の数値は、各球団の盛り上がり度(現在)です。</li>
+                  <li>表示は10秒毎に自動更新されます。</li>
+                  <li>毎日AM1:00～7:00はメンテナンス時間です。</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Optional JavaScript -->
     <script src="./client/wordCloud.js"></script>
     <script src="https://d3js.org/d3.v5.min.js"></script>
