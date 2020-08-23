@@ -35,6 +35,7 @@ class wordCloud {
     .merge(cloud)     // merge(): 新しいtext要素に加えて既存のtext要素も含めて扱う
       .transition().duration(600)
       .text((d) => { return d.text; })                     // 単語全てにテキスト設定
+      //.style("font-family", "Kazesawa-Regular")            // フォントを設定
       .style("font-size", (d) => { return d.size + "px" }) // 単語全てにサイズ設定
       .attr("transform", (d) => {                          // 単語全てに位置を指定
          return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")" 
@@ -45,6 +46,7 @@ class wordCloud {
     d3.layout.cloud()
     .size([this._size.width, this._size.height])
     .words(this._getWords(words))              // words配列を_drawに渡す
+    //.font("Kazesawa-Regular")                  // フォントを設定
     .fontSize((d) => { return d.size })        // フォントサイズを設定
     .rotate(() => { return 0 })                // 回転なしを設定
     .padding(2)                                // ワードクラウド文字間隔を拡大(defaultは1)

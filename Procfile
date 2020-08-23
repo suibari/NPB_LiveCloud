@@ -1,1 +1,1 @@
-web: bash heroku_exec.sh
+web: node app.js
