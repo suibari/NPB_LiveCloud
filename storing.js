@@ -1,6 +1,6 @@
 'use strict';
 
-const OUT_WORDS_LENGTH = 400;   // 出力するword種類の数。上位から出力する
+const OUT_WORDS_LENGTH = 300;   // 出力するword種類の数。上位から出力する
 const MAX_WORDS_LENGTH = 10000; // この数以上のword種類の集計は行わない
 const MAX_TPS_LENGTH   = 10;    // この数までTPS値をためてから平均を出す
 
@@ -47,13 +47,24 @@ module.exports.setCount = function (word, teams) {
   //console.log(arr_count);
 };
 
-module.exports.getCount = function () {
-  // 出力がOUT_WORDS_LENGTH分たまっているかどうか
-  if (arr_count.length > OUT_WORDS_LENGTH) {
-    // 配列の後ろOUT_WORDS_LENGTH個を出力する
-    return arr_count.slice(arr_count.length - OUT_WORDS_LENGTH);
+module.exports.getCount = function (team) {
+  var arr_count_team = [];
+
+  if (team != "all") {
+    // 指定チームがある場合、arr_count[n].teamが引数teamと一致する配列を作る
+    arr_count_team = arr_count.filter((obj) => { return obj.team == team; });
   } else {
-    return arr_count;    
+    // 指定チームがない場合
+    arr_count_team = arr_count;
+  }
+  console.log(arr_count_team);
+
+  // 出力がOUT_WORDS_LENGTH分たまっているかどうか
+  if (arr_count_team.length > OUT_WORDS_LENGTH) {
+    // 配列の後ろOUT_WORDS_LENGTH個を出力する
+    return arr_count_team.slice(arr_count_team.length - OUT_WORDS_LENGTH);
+  } else {
+    return arr_count_team;    
   }
 }
 

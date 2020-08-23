@@ -114,17 +114,51 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <script>
-      // #chartにワードクラウドインスタンス生成
-      var myWordCloud = new wordCloud('#chart');
+      let myWordCloud = new wordCloud('#chart'); // #chartにワードクラウドインスタンス生成
+      const socket    = io.connect();
+      let myTeam      = "all";                   // ワードクラウド表示チーム。req_updateを出すときに使う
 
-      io.connect().on('update', (data) => {
-        console.log('YUKI.N > received data, counts:' + data.count.length);
+      // updateのリクエストを送信
+      socket.emit('req_update', myTeam); // ブラウザ立ち上げ時
+      setInterval(() => {                      // 一定時間ごと
+        socket.emit('req_update', myTeam);
+      }, 10000)
+
+      // update_countイベントを受信したら、ワードクラウドを更新する
+      socket.on('update_count', (count) => {
+        console.log('YUKI.N > received count:' + count.length);
         // ワードクラウド更新
-        myWordCloud.update(data.count);
+        myWordCloud.update(count);
+      })
+      // update_tpsイベントを受信したら、TPSを更新する
+      socket.on('update_tps', (tps) => {
+        console.log('YUKI.N > received tps, teams: ' + Object.keys(tps).length);
         // TPS更新
-        for (let team in data.tps) {
-          $('.TPS.'+ team).text(data.tps[team]);
+        for (let team in tps) {
+          $('.TPS.'+ team).text(tps[team]);
         }
+      })
+
+      // TPS要素へのクリックイベント設定
+      const teams = [
+        "baystars", "giants", "tigers", "swallows", "dragons", "carp", 
+        "hawks", "lions", "buffaloes", "eagles", "fighters", "marines"
+      ];
+      teams.forEach((team) => {
+        $('.TPS.'+team).on('click', () => {
+          let selectTeam;
+
+          // 選択中のチームと選択したチームが同じならallを設定
+          if (myTeam == team) {
+            myTeam = "all"; // チームリセット
+          } else {
+            myTeam = team;  // 選択チームをmyTeamにセット
+          }
+
+          console.log("YUKI.N > select team: " + myTeam);
+          socket.emit('req_change_room', myTeam);
+          socket.emit('req_update', myTeam);
+        })
       })
     </script>
   </body>
