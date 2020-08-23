@@ -49,7 +49,7 @@ class wordCloud {
     //.font("Kazesawa-Regular")                  // フォントを設定
     .fontSize((d) => { return d.size })        // フォントサイズを設定
     .rotate(() => { return 0 })                // 回転なしを設定
-    .padding(3)                                // ワードクラウド文字間隔を拡大(defaultは1)
+    .padding(4)                                // ワードクラウド文字間隔を拡大(defaultは1)
     .on("end", this._draw) // layoutが全ての単語の配置を完了したら、_draw関数を実行する
     .start();                                  // _draw関数の実行
   }
@@ -58,7 +58,7 @@ class wordCloud {
   _getWords(data) {
     var countMax   = d3.max(data, (d) => {return d.count});
     var countMin   = d3.min(data, (d) => {return d.count});
-    var sizeScale  = d3.scaleLog().domain([countMin, countMax]).range([10, 50]); //ログスケール
+    var sizeScale  = d3.scaleLog().domain([countMin, countMax]).range([10, 60]); //ログスケール
     var colorScale = function(t){
       switch(t) {
         case "baystars":  return d3.color("dodgerblue");

@@ -4,13 +4,22 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@suibari_cha">
+    <meta property="og:url" content="https://npb-livecloud.herokuapp.com/">
+    <meta property="og:title" content="NPB-LiveCloud!(ライブクラウド)">
+    <meta property="og:description" content="NPB-LiveCloud! は、プロ野球応援Webアプリです。アカウント登録不要！　Twitterの野球関連ツイートを集計してワードクラウド表示します。どのチームでいまどういう話題がホットなのか、グラフィカルに知ることができます！">
+    <meta property="og:image" content="https://user-images.githubusercontent.com/61776220/90979167-5147d400-e58e-11ea-89f7-67eef521e05d.png">
     <link rel="shortcut icon" href="./client/favicon.ico"/>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <title>NPB Live-cloud!</title>
     <style type="text/css">
       div.TPS { /* 小画面用 */
+        text-align:left;
+        padding: 0;
         padding-left: 5px;
+        border: 0 none;
         border-left-width: 5px;
         border-left-style: solid;
       }
@@ -36,21 +45,21 @@
   </head>
   <body>
     <div class="container-fluid">
-      <div class="row bg-dark text-white">
-        <div class="col-2 giants TPS">-.--</div>
-        <div class="col-2 baystars TPS">-.--</div>
-        <div class="col-2 tigers TPS">-.--</div>
-        <div class="col-2 carp TPS">-.--</div>
-        <div class="col-2 dragons TPS">-.--</div>
-        <div class="col-2 swallows TPS">-.--</div>
+      <div class="row">
+        <div class="col-2 btn btn-dark rounded-0 giants TPS">-.--</div>
+        <div class="col-2 btn btn-dark rounded-0 baystars TPS">-.--</div>
+        <div class="col-2 btn btn-dark rounded-0 tigers TPS">-.--</div>
+        <div class="col-2 btn btn-dark rounded-0 carp TPS">-.--</div>
+        <div class="col-2 btn btn-dark rounded-0 dragons TPS">-.--</div>
+        <div class="col-2 btn btn-dark rounded-0 swallows TPS">-.--</div>
       </div>
-      <div class="row bg-dark text-white">
-        <div class="col-2 lions TPS">-.--</div>
-        <div class="col-2 hawks TPS">-.--</div>
-        <div class="col-2 eagles TPS">-.--</div>
-        <div class="col-2 marines TPS">-.--</div>
-        <div class="col-2 fighters TPS">-.--</div>
-        <div class="col-2 buffaloes TPS">-.--</div>
+      <div class="row">
+        <div class="col-2 btn btn-dark rounded-0 lions TPS">-.--</div>
+        <div class="col-2 btn btn-dark rounded-0 hawks TPS">-.--</div>
+        <div class="col-2 btn btn-dark rounded-0 eagles TPS">-.--</div>
+        <div class="col-2 btn btn-dark rounded-0 marines TPS">-.--</div>
+        <div class="col-2 btn btn-dark rounded-0 fighters TPS">-.--</div>
+        <div class="col-2 btn btn-dark rounded-0 buffaloes TPS">-.--</div>
       </div>
     </div>
     <div class="container-fluid pt-3">

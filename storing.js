@@ -1,6 +1,6 @@
 'use strict';
 
-const OUT_WORDS_LENGTH = 300;   // 出力するword種類の数。上位から出力する
+const OUT_WORDS_LENGTH = 200;   // 出力するword種類の数。上位から出力する
 const MAX_WORDS_LENGTH = 10000; // この数以上のword種類の集計は行わない
 const MAX_TPS_LENGTH   = 10;    // この数までTPS値をためてから平均を出す
 
@@ -57,8 +57,7 @@ module.exports.getCount = function (team) {
     // 指定チームがない場合
     arr_count_team = arr_count;
   }
-  console.log(arr_count_team);
-
+  
   // 出力がOUT_WORDS_LENGTH分たまっているかどうか
   if (arr_count_team.length > OUT_WORDS_LENGTH) {
     // 配列の後ろOUT_WORDS_LENGTH個を出力する
