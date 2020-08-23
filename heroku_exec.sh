@@ -1,2 +1,3 @@
-echo "userdic = ./src/original.dic" >> /app/.linuxbrew/lib/mecab/dic/ipadic/dicrc
+echo "userdic = /app/src/bbp.dic" >> /app/.linuxbrew/etc/mecabrc
+less /app/.linuxbrew/etc/mecabrc
 node app.js
