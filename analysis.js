@@ -77,7 +77,7 @@ module.exports = function (text) {
       '^[!！]*$',               // ビックリマークの連続だけ
       '^.ー*$', '^ー*.$',       // 伸ばし棒+一文字だけ
       '[ -~]+',                 // 半角英数字または記号のみ連続
-      '^[＃～「」『』]+$'        // 全角記号のみの連続
+      '^[＃～「」『』　]+$'      // 全角記号のみの連続
     ];
     const regexp = new RegExp(ranges.join('|'), 'g');
     return regexp.test(str);

@@ -7,8 +7,8 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@suibari_cha">
     <meta property="og:url" content="https://npb-livecloud.herokuapp.com/">
-    <meta property="og:title" content="NPB-LiveCloud!(ライブクラウド)">
-    <meta property="og:description" content="NPB-LiveCloud! は、プロ野球応援Webアプリです。アカウント登録不要！　Twitterの野球関連ツイートを集計してワードクラウド表示します。どのチームでいまどういう話題がホットなのか、グラフィカルに知ることができます！">
+    <meta property="og:title" content="NPB-LiveCloud!（ライブクラウド）">
+    <meta property="og:description" content="アカウント登録不要なプロ野球応援Webアプリです。Twitterの野球関連ツイートを集計してワードクラウド表示します。どのチームでいまどういう話題がホットなのか、グラフィカルに知ることができます！">
     <meta property="og:image" content="https://user-images.githubusercontent.com/61776220/90979167-5147d400-e58e-11ea-89f7-67eef521e05d.png">
     <link rel="shortcut icon" href="./client/favicon.ico"/>
     <!-- Bootstrap CSS -->
@@ -128,8 +128,8 @@
       let myTeam      = "all";                   // ワードクラウド表示チーム。req_updateを出すときに使う
 
       // updateのリクエストを送信
-      socket.emit('req_update', myTeam); // ブラウザ立ち上げ時
-      setInterval(() => {                      // 一定時間ごと
+      socket.emit('req_update', myTeam); // ブラウザ立ち上げ時に描画
+      let timer = setInterval(() => {    // ブラウザ立ち上げ時の一定時間ごとタイマー開始
         socket.emit('req_update', myTeam);
       }, 10000)
 
@@ -157,6 +157,9 @@
         $('.TPS.'+team).on('click', () => {
           let selectTeam;
 
+          // チーム選択による再描画とタイマーによる再描画が被らないようタイマーリセット
+          clearInterval(timer);
+
           // 選択中のチームと選択したチームが同じならallを設定
           if (myTeam == team) {
             myTeam = "all"; // チームリセット
@@ -166,7 +169,10 @@
 
           console.log("YUKI.N > select team: " + myTeam);
           socket.emit('req_change_room', myTeam);
-          socket.emit('req_update', myTeam);
+          socket.emit('req_update', myTeam);  // チーム変更時に描画
+          timer = setInterval(() => {         // 一定時間ごとタイマー再開
+            socket.emit('req_update', myTeam);
+          }, 10000)
         })
       })
     </script>

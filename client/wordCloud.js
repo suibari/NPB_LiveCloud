@@ -31,9 +31,10 @@ class wordCloud {
       .attr("text-anchor", "middle")                       // 文字位置の指定
     .merge(cloud)     // merge(): 新しいtext要素に加えて既存のtext要素も含めて扱う
       .transition().duration(600)
+      .style('paint-order', 'stroke')
       .style('fill', (d) => { return d.color })            // 新しい単語を球団カラーで塗りつぶす
-      .style('stroke-width', (d) => { if (d.team=="tigers") return d.size/50 }) // 阪神の場合、文字色が黄色なので見やすいよう黒で縁取り(フチのサイズ)
-      .style('stroke', (d) => { if (d.team=="tigers") return "#000" })          // 同上(フチの色)
+      .style('stroke-width', (d) => { if ((d.team=="tigers")||(d.team=="lions")) return d.size/12+'px' }) // 阪神or西武の場合、文字色だけだとみづらいので黒で縁取り(フチのサイズ)
+      .style('stroke',       (d) => { if ((d.team=="tigers")||(d.team=="lions")) return "#000" })         // 同上(フチの色)
       .text((d) => { return d.text; })                     // 単語全てにテキスト設定
       //.style("font-family", "Kazesawa-Regular")            // フォントを設定
       .style("font-size", (d) => { return d.size + "px" }) // 単語全てにサイズ設定
