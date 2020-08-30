@@ -13,6 +13,7 @@
     <link rel="shortcut icon" href="./client/favicon.ico"/>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" >
     <title>NPB Live-cloud!</title>
     <style type="text/css">
       div.TPS { /* 小画面用 */
@@ -79,8 +80,13 @@
         <a href="" class="text-muted" data-toggle="modal" data-target="#howtouse">つかいかた</a>
       </div>
       <div class="raw text-center small text-muted my-2">
-        NPB-LiveCloud! 
-        <a href="https://github.com/suibari" class="text-muted">@suibari</a>
+        NPB-LiveCloud! by Suibari
+        <a href="https://twitter.com/Suibari_cha" target="_blank" rel="noopener noreferrer">
+          <i class="fa fa-twitter-square text-muted px-1"></i>
+        </a>
+        <a href="https://github.com/suibari" target="_blank" rel="noopener noreferrer">
+          <i class="fa fa-github-square text-muted"></i>
+        </a>
       </div>
     </div>
     <!-- modal -->
@@ -97,11 +103,12 @@
             <div class="container-fluid">
               <div class="raw　no-gutters">
                 <ul>
-                  <li>文字の大きさは、そのワードのツイート総数です。</li>
-                  <li>文字の色は、球団カラーに対応しています。</li>
-                  <li>画面上部の数値は、各球団の盛り上がり度(現在)です。</li>
+                  <li>ワードクラウドの文字の大きさは、その言葉がどれだけツイートされたかを示します。</li>
+                  <li>ワードクラウドの文字の色は、どの球団ファンがツイートしたかを示します。</li>
+                  <li>画面上部の数値は、各球団の現在の毎秒ツイート数です。</li>
+                  <li>毎秒ツイート数をクリックorタップすることで、ワードクラウドを球団ごとにフィルタリングできます。</li>
+                  <li>フィルタリング後その球団をもう一回クリックorタップすることで、フィルタリング解除できます。</li>
                   <li>表示は10秒毎に自動更新されます。</li>
-                  <li>毎日AM1:00～7:00はメンテナンス時間です。</li>
                 </ul>
               </div>
             </div>

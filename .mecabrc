@@ -1,3 +1,3 @@
 ; Configuration file of MeCab on heroku-environment
 dicdir  = /app/.linuxbrew/lib/mecab/dic/ipadic
-userdic = /app/src/bbp.dic
+userdic = /app/src/bbp.dic,/app/src/slang.dic
